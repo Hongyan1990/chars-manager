@@ -6,11 +6,9 @@
 
 <script>
 	import cookie from './util/cookie.js'
-	import OrderHeader from './views/OrderHeader.vue'
 	export default {
 		name: 'app',
 		components: {
-			OrderHeader
 		},
 		data () {
 			return {

@@ -1,68 +1,52 @@
 <template>
   <div class="login-bg">
     <div class="header">
-      <el-select v-model="value" placeholder="请选择" @change="changeLang">
-        <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value">
-        </el-option>
-      </el-select>
+      <change-lang />
     </div>
-    <div>
-      <el-button>{{$t('app.hello')}}</el-button>
-      <el-date-picker
-              v-model="value1"
-              type="date"
-              :placeholder="$t('app.selDate')">
-      </el-date-picker>
+    <div class="block">
+      <el-image :src="src" class="img"></el-image>
     </div>
-    <form class="login" @submit="login">
-      <h2>
-        <span>Login</span>
-        <span class="error-msg" v-show="errMsg">{{errMsg}}</span>
-      </h2>
-      <input type="text" class="login-input" v-model="username" placeholder="User Name">
-      <input type="password" class="login-input" v-model="password" placeholder="Password" autocomplete="new-password">
-      <!--<button type="submit" class="login-btn">登 录</button>-->
-      <el-button type="primary" native-type="submit" size="small" style="width: 30%; margin: 20px auto;">登 录</el-button>
-    </form>
-
+    <div class="form">
+      <el-form class="my-form" ref="form" :model="form" label-width="80px" style="width: 500px; margin: 0 auto;">
+        <el-form-item label="邮箱账号">
+          <el-input v-model="form.name"></el-input>
+        </el-form-item>
+        <el-form-item label="密码">
+          <el-input type="password" v-model="form.pwd"></el-input>
+          <span class="forget-pwd" @click="isShowDialog=true">忘记密码</span>
+        </el-form-item>
+        <!--<button type="submit" class="login-btn">登 录</button>-->
+        <el-button type="primary" native-type="submit" size="small" style="width: 30%; margin: 0px auto 20px;">登 录</el-button>
+      </el-form>
+    </div>
+    <forget-pwd :isShowDialog="isShowDialog" @closeCreateMenuDialog="closeCreateMenuDialog" />
   </div>
 </template>
 
 <script>
 import cookie from '../util/cookie.js'
+import ChangeLang from "../components/ChangeLang.vue";
+import ForgetPwd from "./ForgetPwd.vue";
 export default {
   name: 'Login',
   metaInfo: {
     title: 'Login vue'
   },
+  components: {
+    ChangeLang,
+    ForgetPwd
+  },
   data () {
     return {
-      errMsg: '',
-      username: '',
-      password: '',
-      options: [{
-        value: 'zh',
-        label: '中文'
-      }, {
-        value: 'en',
-        label: 'English'
-      }, {
-        value: 'ja',
-        label: 'Japanese'
-      }
-      ],
-      value: 'zh',
-      value1: ''
+      form: {
+        name: ''
+      },
+      src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+      isShowDialog: false
     }
   },
   methods: {
-    changeLang() {
-      this.$i18n.locale = this.value;
-    },
+
     login (e) {
     	e.preventDefault()
     	if(this.validteForm()) {
@@ -94,6 +78,9 @@ export default {
       }
       this.errMsg = ''
       return true
+    },
+    closeCreateMenuDialog () {
+      this.isShowDialog = false;
     }
   },
   mounted() {
@@ -103,59 +90,34 @@ export default {
 </script>
 
 <style scoped>
-.login {
-  width: 400px;
-  height: 250px;
-  background-color: rgba(204, 204, 204, 0.7);
-  margin: 30px auto 0;
-  display: flex;
-  flex-direction: column;
-
-}
-  .login h2 {
-    font-weight: normal;
-    padding: 10px;
-    margin: 0px;
-  }
-  .login h2 {
-    color: #fff;
-  }
-  .login-input {
-    margin: 10px auto;
-    line-height: 30px;
-    padding-left: 10px;
-    width: 90%;
-    border-radius: 2px;
-    border: none;
-  }
-  .login-btn {
-    width: 30%;
-    line-height: 30px;
-    margin: 20px auto;
-    background-color: #5e99d5e8;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  .error-msg {
-    font-size: 16px;
-    color: red;
-  }
   .login-bg {
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*width: 100%;*/
-    /*height: 100%;*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    /*right: 0;*/
-    /*bottom: 0;*/
-    /*flex-direction: column;*/
-    /*justify-content: center;*/
+    /*text-align: center;*/
   }
-  .login-bg h1 {
-    /*color: #fff;*/
-    /*font-family: fantasy;*/
+  .header {
+    padding: 10px;
+    background-color: #555555;
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2), 0px 3px 10px 0px rgba(0, 0, 0, 0.19);
+    text-align: right;
+  }
+  .block {
+    margin: 30px 0px;
+  }
+  .img {
+    height: 250px;
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2), 0px 3px 10px 0px rgba(0, 0, 0, 0.19);
+  }
+  .forget-pwd {
+    float: right;
+    cursor: pointer;
+    color: #409EFF;
+  }
+  .my-form {
+    width: 500px;
+    margin: 0px auto;
+    padding: 25px 15px 15px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2), 0px 3px 10px 0px rgba(0, 0, 0, 0.19);
   }
 </style>

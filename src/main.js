@@ -4,7 +4,8 @@ import {
   Button, Container, Header, Main, Row, Col,
   Table, TableColumn, Dialog, Input, Form, FormItem,
   Tooltip, Upload, Loading, Message, Tabs, TabPane, Avatar,
-    Card, Pagination, Select, Option, DatePicker
+    Card, Pagination, Select, Option, DatePicker, Image,
+  Dropdown, DropdownItem, DropdownMenu, Popover
 } from 'element-ui'
 import VeHistogram from 'v-charts/lib/histogram.common'
 import VePie from 'v-charts/lib/pie.common'
@@ -46,18 +47,23 @@ Vue.use(Pagination)
 Vue.use(Select)
 Vue.use(Option)
 Vue.use(DatePicker)
+Vue.use(Image)
+Vue.use(DropdownItem)
+Vue.use(DropdownMenu)
+Vue.use(Dropdown)
+Vue.use(Popover)
 Vue.prototype.$message = Message
 
 const store = createStore()
 
 router.beforeEach((to, from, next) => {
-  const username = cookie.getCookie('username')
-  if(username === null && to.path !== '/login') {
-  	next('/login')
-  } else {
-  	next()
-  }
-  
+  // const username = cookie.getCookie('username')
+  // if(username === null && to.path !== '/login') {
+  // 	next('/login')
+  // } else {
+  // 	next()
+  // }
+  next()
 })
 router.beforeResolve((to, from, next) => {
   console.log('router before resolve')
