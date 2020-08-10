@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-dropdown @command="changeLang">
-      <span class="el-dropdown-link">
+      <span class="el-dropdown-link" :style="{color: color}">
         {{value}}<i class="el-icon-arrow-down el-icon--right"></i>
       </span>
       <el-dropdown-menu slot="dropdown">
@@ -16,6 +16,7 @@
 <script>
   export default {
     name: "ChangeLang",
+    props: ['color'],
     data() {
       return {
         langMap: {

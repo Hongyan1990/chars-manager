@@ -1,7 +1,7 @@
 <template>
   <div class="login-bg">
     <div class="header">
-      <change-lang />
+      <change-lang color="black" />
     </div>
     <div class="block">
       <el-image :src="src" class="img"></el-image>
@@ -95,8 +95,8 @@ export default {
   }
   .header {
     padding: 10px;
-    background-color: #555555;
-    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2), 0px 3px 10px 0px rgba(0, 0, 0, 0.19);
+    /*background-color: #555555;*/
+    /*box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2), 0px 3px 10px 0px rgba(0, 0, 0, 0.19);*/
     text-align: right;
   }
   .block {

@@ -3,7 +3,7 @@ import Router from 'vue-router'
 const routes = [
 	{
 		path: '/',
-		redirect: '/main'
+		redirect: '/home'
 	},
 	{
 		path: '/home',
