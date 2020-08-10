@@ -1,14 +1,17 @@
 <template>
 	<div class="my-box">
+		<my-header v-if="$route.path !== '/login'" />
 		<router-view></router-view>
 	</div>
 </template>
 
 <script>
 	import cookie from './util/cookie.js'
+	import MyHeader from "./components/MyHeader.vue";
 	export default {
 		name: 'app',
 		components: {
+			MyHeader
 		},
 		data () {
 			return {
@@ -21,6 +24,9 @@
 			localHeight () {
 				return window.innerHeight;
 			}
+		},
+		mounted() {
+			console.log(this.$route)
 		}
 	}
 </script>
