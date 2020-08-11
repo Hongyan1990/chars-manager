@@ -6,7 +6,7 @@ import {
   Tooltip, Upload, Loading, Message, Tabs, TabPane, Avatar,
     Card, Pagination, Select, Option, DatePicker, Image,
   Dropdown, DropdownItem, DropdownMenu, Popover, Link,
-  Breadcrumb, BreadcrumbItem
+  Breadcrumb, BreadcrumbItem, InputNumber, Badge, Drawer
 } from 'element-ui'
 import VeHistogram from 'v-charts/lib/histogram.common'
 import VePie from 'v-charts/lib/pie.common'
@@ -56,6 +56,9 @@ Vue.use(Popover)
 Vue.use(Link)
 Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
+Vue.use(InputNumber)
+Vue.use(Badge)
+Vue.use(Drawer)
 Vue.prototype.$message = Message
 
 const store = createStore()

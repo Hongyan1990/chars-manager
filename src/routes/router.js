@@ -20,7 +20,15 @@ const routes = [
 	{
 		path: '/dis',
 		component: () => import('../views/Disclaimer.vue')
-	}
+	},
+  {
+    path: '/prod',
+    component: () => import('../views/Product.vue')
+  },
+  {
+    path: '/put',
+    component: () => import('../views/PutChars.vue')
+  }
 ]
 
 export default new Router({
