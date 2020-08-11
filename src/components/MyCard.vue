@@ -13,8 +13,8 @@
 <style scoped>
   .my-card {
     display: inline-block;
-    height: 100px;
-    width: 15%;
+    width: 100%;
+    padding: 15px 0px;
     background-image: linear-gradient(153deg, #909399 40%, #f5f5f5);
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);

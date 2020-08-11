@@ -6,10 +6,12 @@ import {
   Tooltip, Upload, Loading, Message, Tabs, TabPane, Avatar,
     Card, Pagination, Select, Option, DatePicker, Image,
   Dropdown, DropdownItem, DropdownMenu, Popover, Link,
-  Breadcrumb, BreadcrumbItem, InputNumber, Badge, Drawer
+  Breadcrumb, BreadcrumbItem, InputNumber, Badge, Drawer,
+  Aside
 } from 'element-ui'
 import VeHistogram from 'v-charts/lib/histogram.common'
 import VePie from 'v-charts/lib/pie.common'
+import VeRing from 'v-charts/lib/ring.common'
 
 import App from './app.vue'
 import createStore from './store/store.js'
@@ -24,6 +26,7 @@ Vue.use(Router)
 
 Vue.component(VeHistogram.name, VeHistogram)
 Vue.component(VePie.name, VePie)
+Vue.component(VeRing.name, VeRing)
 
 Vue.use(Button)
 Vue.use(Container)
@@ -59,6 +62,7 @@ Vue.use(BreadcrumbItem)
 Vue.use(InputNumber)
 Vue.use(Badge)
 Vue.use(Drawer)
+Vue.use(Aside)
 Vue.prototype.$message = Message
 
 const store = createStore()
