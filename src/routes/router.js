@@ -28,7 +28,11 @@ const routes = [
   {
     path: '/put',
     component: () => import('../views/PutChars.vue')
-  }
+  },
+	{
+		path: '/pp',
+		component: () => import('../views/PersonalPut.vue')
+	}
 ]
 
 export default new Router({
